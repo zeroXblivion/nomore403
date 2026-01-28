@@ -869,6 +869,7 @@ func setupRequestOptions(uri, proxy, userAgent string, reqHeaders []string, bypa
 	// Parse custom headers from CLI arguments and add them to the headers slice.
 	if len(reqHeaders) > 0 && reqHeaders[0] != "" {
 		for _, _header := range reqHeaders {
+			// Fix colon split bug
 			headerSplit := strings.SplitN(_header, ":", 2)
 			if len(headerSplit) > 1 {
 				headers = append(headers, header{headerSplit[0], headerSplit[1]})
